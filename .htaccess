@@ -1,0 +1,14 @@
+#AuthUserFile /home/user/.htpasswd
+#AuthGroupFile /dev/null
+#AuthName "Gigabing protected files"
+#AuthType Basic
+
+#<Limit GET>
+#require valid-user
+#</Limit>
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php/$0 [PT,L]
+
